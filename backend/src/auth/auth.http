@@ -1,0 +1,23 @@
+### SignUp
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "firstName": "paul",
+    "lastName": "smith",
+    "email": "yevgen1234@example.com",
+    "password": "GH6546516hh"
+}
+
+### Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "yevgen1234@example.com",
+    "password": "GH6546516hh"
+}
+
+### Profile
+GET http://localhost:3000/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdWxAc20uY29tIiwic3ViIjoxLCJmaXJzdE5hbWUiOiJQYXVsIiwibGFzdE5hbWUiOiJTbWl0aCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE1NjEyOTQ0LCJleHAiOjE3MTU2MTY1NDR9.JxOkqC-ImWHTcsbYJn39Mb4P6CJPNXRKHz-gr3OKjiY

@@ -25,7 +25,7 @@ export class TaskList {
   @Column()
   updatedAt: Date;
 
-  @ManyToOne(() => User, (user) => user.taskLists)
+  @ManyToOne(() => User)
   user: User;
 
   @OneToMany(() => Task, (task) => task.taskList)

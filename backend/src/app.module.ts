@@ -9,6 +9,7 @@ import { TaskList } from './task-lists/task-list.entity';
 import { Task } from './tasks/task.entity';
 import { APP_PIPE } from '@nestjs/core';
 import { IsUniqueConstraint } from './shared/validation/is-unique';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     ConfigModule.forRoot({}),
@@ -25,6 +26,7 @@ import { IsUniqueConstraint } from './shared/validation/is-unique';
     UsersModule,
     TasksModule,
     TaskListsModule,
+    AuthModule,
   ],
   providers: [
     {

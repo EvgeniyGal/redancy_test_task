@@ -8,7 +8,7 @@ import {
 } from 'class-validator';
 import { EntityManager } from 'typeorm';
 
-export type IsUniqueConstraintInput = {
+export type IsUniqueConstraintInterface = {
   tableName: string;
   column: string;
 };
@@ -18,10 +18,9 @@ export type IsUniqueConstraintInput = {
 export class IsUniqueConstraint implements ValidatorConstraintInterface {
   constructor(private entityManager: EntityManager) {}
   async validate(value: any, args?: ValidationArguments): Promise<boolean> {
-    // catch options from decorator
-    const { tableName, column }: IsUniqueConstraintInput = args.constraints[0];
+    const { tableName, column }: IsUniqueConstraintInterface =
+      args.constraints[0];
 
-    // database query check data is exists
     const dataExist = await this.entityManager
       .getRepository(tableName)
       .createQueryBuilder(tableName)
@@ -38,9 +37,8 @@ export class IsUniqueConstraint implements ValidatorConstraintInterface {
   }
 }
 
-// decorator function
 export function isUnique(
-  options: IsUniqueConstraintInput,
+  options: IsUniqueConstraintInterface,
   validationOptions?: ValidationOptions,
 ) {
   return function (object: any, propertyName: string) {

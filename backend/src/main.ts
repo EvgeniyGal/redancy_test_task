@@ -4,8 +4,10 @@ import { useContainer } from 'class-validator';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // wrap AppModule with UseContainer
+
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
+
   await app.listen(3000);
 }
+
 bootstrap();

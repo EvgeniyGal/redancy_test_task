@@ -1,25 +1,36 @@
 import {
-  IsString,
+  IsEnum,
+  IsNotEmpty,
+  IsNotEmptyObject,
   IsOptional,
-  IsEmail,
+  IsString,
   MinLength,
-  MaxLength,
+  Validate,
 } from 'class-validator';
+import { UserRole } from '../user.entity';
 
 export class UpdateUserDto {
   @IsOptional()
-  @IsString()
-  @MinLength(3)
-  @MaxLength(15)
-  firstName?: string;
+  @MinLength(2)
+  firstName: string;
+
+  @IsOptional()
+  @MinLength(2)
+  lastName: string;
+
+  @IsOptional()
+  @IsEnum(UserRole)
+  role: UserRole;
 
   @IsOptional()
   @IsString()
-  @MinLength(3)
-  @MaxLength(15)
-  lastName?: string;
+  @IsNotEmpty()
+  password: string;
 
   @IsOptional()
-  @IsEmail()
-  email?: string;
+  @IsString()
+  token: string | null;
+
+  @IsNotEmptyObject()
+  this: UpdateUserDto;
 }

@@ -1,5 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { TaskList } from '../task-lists/task-list.entity';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum UserRole {
   ADMIN = 'admin',
@@ -27,6 +26,6 @@ export class User {
   @Column({ nullable: false })
   password: string;
 
-  @OneToMany(() => TaskList, (taskList) => taskList.user)
-  taskLists: TaskList[];
+  @Column({ nullable: true, default: null })
+  token: string;
 }
